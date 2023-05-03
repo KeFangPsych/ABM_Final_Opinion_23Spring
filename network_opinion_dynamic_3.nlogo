@@ -3,6 +3,7 @@ turtles-own [attitude expression norm]
 to setup
   clear-all
   create-turtles no_of_agents
+
   ask turtles [
     setxy random-xcor random-ycor
     set shape "circle"
@@ -131,12 +132,48 @@ to go
   tick
 
 end
+
+  ;; link deletion and new link formation
+  ;;link_change_probability
+    ;ask turtles [
+
+    ;let me_connector self
+    ;let already-neighbors link-neighbors
+    ;let potential-neighbors other turtles with [not member? self already-neighbors]
+
+    ;if random-float 1.0 < 0.1 [
+      ;ifelse count potential-neighbors > change
+      ;[
+        ;ask n-of change potential-neighbors [create-link-with me_connector]
+        ;let new-already-neighbors link-neighbors
+        ;let sorted-neighbors sort-on [abs ([attitude] of me_connector - [attitude] of myself)] link-neighbors
+        ;let my_links links with [end1 = me_connector or end2 = me_connector]
+        ;let selected-neighbors turtle-set n-of change sorted-neighbors
+        ;ask selected-neighbors [
+          ;let die-links my_links with [end1 = myself or end2 = myself]
+          ;ask die-links [die]]
+      ;]
+
+      ;[
+        ;ask potential-neighbors [create-link-with me_connector]
+        ;let new-already-neighbors link-neighbors
+        ;let sorted-neighbors sort-on [abs ([attitude] of me_connector - [attitude] of myself)] link-neighbors
+        ;let my_links links with [end1 = me_connector or end2 = me_connector]
+        ;let selected-neighbors turtle-set n-of (count potential-neighbors) sorted-neighbors
+        ;ask selected-neighbors [
+          ;let die-links my_links with [end1 = myself or end2 = myself]
+          ;ask die-links [die]]
+
+      ;]
+
+    ;]
+  ;]
 @#$#@#$#@
 GRAPHICS-WINDOW
-210
-10
-862
-663
+301
+18
+953
+671
 -1
 -1
 19.52
@@ -160,10 +197,10 @@ ticks
 30.0
 
 BUTTON
-32
-52
-98
-85
+57
+23
+123
+56
 NIL
 setup
 NIL
@@ -177,10 +214,10 @@ NIL
 1
 
 MONITOR
-903
-50
-1137
-95
+24
+73
+263
+118
 avg_link_per_turtle
 mean [count my-links] of turtles
 17
@@ -188,10 +225,10 @@ mean [count my-links] of turtles
 11
 
 INPUTBOX
-1336
-518
-1491
-578
+969
+288
+1060
+348
 a
 20.0
 1
@@ -199,10 +236,10 @@ a
 Number
 
 INPUTBOX
-1336
-578
-1491
-638
+1062
+288
+1154
+348
 b
 0.06
 1
@@ -210,10 +247,10 @@ b
 Number
 
 PLOT
-903
-138
-1103
-288
+962
+112
+1162
+262
 Attitude histogram
 Attitude
 Frequency
@@ -228,10 +265,10 @@ PENS
 "attitude" 4.0 1 -16777216 true "" "histogram [attitude] of turtles"
 
 MONITOR
-44
-271
-185
-316
+1484
+289
+1625
+334
 p0
 1 / (a + (0 / b) )
 17
@@ -239,10 +276,10 @@ p0
 11
 
 MONITOR
-45
-318
-185
-363
+1485
+336
+1625
+381
 p10
 1 / (a + (10 / b) )
 17
@@ -250,10 +287,10 @@ p10
 11
 
 MONITOR
-45
-365
-185
-410
+1485
+383
+1625
+428
 p20
 1 / (a + (20 / b) )
 17
@@ -261,10 +298,10 @@ p20
 11
 
 MONITOR
-45
-412
-185
-457
+1485
+430
+1625
+475
 p30
 1 / (a + (30 / b) )
 17
@@ -272,10 +309,10 @@ p30
 11
 
 MONITOR
-45
-459
-185
-504
+1485
+477
+1625
+522
 p40
 1 / (a + (40 / b) )
 17
@@ -283,10 +320,10 @@ p40
 11
 
 MONITOR
-45
-506
-185
-551
+1485
+524
+1625
+569
 p50
 1 / (a + (50 / b) )
 17
@@ -294,10 +331,10 @@ p50
 11
 
 SLIDER
-903
-99
-1075
-132
+961
+19
+1160
+52
 no_of_agents
 no_of_agents
 0
@@ -309,10 +346,10 @@ NIL
 HORIZONTAL
 
 MONITOR
-45
-552
-186
-597
+1485
+570
+1626
+615
 p100
 1 / (a + (100 / b) )
 17
@@ -320,10 +357,10 @@ p100
 11
 
 PLOT
-1410
-171
-1653
-321
+24
+402
+267
+552
 No of links: attitude >= 16
 NIL
 NIL
@@ -338,10 +375,10 @@ PENS
 "default" 4.0 1 -16777216 true "" "histogram [count my-links] of turtles with [attitude > 16]"
 
 PLOT
-1410
-21
-1651
-171
+24
+252
+265
+402
 No of links: attitude <= -16
 NIL
 NIL
@@ -356,10 +393,10 @@ PENS
 "default" 4.0 1 -16777216 true "" "histogram [count my-links] of turtles with [attitude < -16]"
 
 PLOT
-1410
-321
-1652
-471
+24
+552
+266
+702
 No of links: -16 <= attitude <= 16
 NIL
 NIL
@@ -374,32 +411,32 @@ PENS
 "default" 4.0 1 -16777216 true "" "histogram [count my-links] of turtles with [attitude >= -16 and attitude <= 16]"
 
 MONITOR
-1203
-21
-1409
-66
-No of links: attitude <= -16
+24
+119
+264
+164
+No of links: attitude < -16
 mean [count my-links] of turtles with [attitude < -16]
 17
 1
 11
 
 MONITOR
-1203
-67
-1409
-112
-No of links: attitude <= -16
+24
+163
+264
+208
+No of links: attitude > -16
 mean [count my-links] of turtles with [attitude > 16]
 17
 1
 11
 
 MONITOR
-1203
-113
-1409
-158
+24
+207
+265
+252
 No of links: 16<=attitude<=16
 mean [count my-links] of turtles with [attitude <= 16 and attitude >= -16]
 17
@@ -407,10 +444,10 @@ mean [count my-links] of turtles with [attitude <= 16 and attitude >= -16]
 11
 
 BUTTON
-117
-53
-180
-86
+142
+24
+205
+57
 NIL
 go
 T
@@ -424,32 +461,32 @@ NIL
 0
 
 INPUTBOX
-904
-329
-1059
-389
+1060
+478
+1154
+538
 max_prob
-1.0
+0.7
 1
 0
 Number
 
 INPUTBOX
-905
-390
-1058
-450
-min_prob
-0.0
-1
-0
-Number
-
-INPUTBOX
-904
-451
+966
+478
 1059
-511
+538
+min_prob
+0.1
+1
+0
+Number
+
+INPUTBOX
+966
+658
+1121
+718
 step
 0.1
 1
@@ -457,20 +494,20 @@ step
 Number
 
 CHOOSER
-913
-562
-1076
-607
+962
+66
+1161
+111
 initial_distribution
 initial_distribution
 "normal" "uniform" "polarized"
 2
 
 INPUTBOX
-1496
-517
-1651
-577
+965
+539
+1060
+599
 sigmoid_para
 0.1
 1
@@ -478,30 +515,30 @@ sigmoid_para
 Number
 
 CHOOSER
-913
-608
-1077
-653
+966
+435
+1154
+480
 attitude_behavior
 attitude_behavior
 "linear" "sigmoid" "cubic"
-2
+0
 
 CHOOSER
-1079
-562
-1280
-607
+966
+612
+1121
+657
 biased_observe
 biased_observe
 "unbiased" "biased_towards_extreme"
-1
+0
 
 SWITCH
-1079
-320
-1192
-353
+969
+350
+1153
+383
 no_alone
 no_alone
 0
@@ -509,10 +546,10 @@ no_alone
 -1000
 
 INPUTBOX
-1496
-578
-1651
-638
+1061
+539
+1154
+599
 cubic_para
 8.0E-6
 1
@@ -520,13 +557,13 @@ cubic_para
 Number
 
 SWITCH
-1079
-356
-1241
-389
+968
+384
+1153
+417
 group_affiliate
 group_affiliate
-1
+0
 1
 -1000
 

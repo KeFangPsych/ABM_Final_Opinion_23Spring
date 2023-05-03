@@ -131,6 +131,43 @@ to go
   tick
 
 end
+
+  ;; link deletion and new link formation
+  ;;link_change_probability
+    ;ask turtles [
+
+    ;let me_connector self
+    ;let already-neighbors link-neighbors
+    ;let potential-neighbors other turtles with [not member? self already-neighbors]
+
+    ;if random-float 1.0 < 0.1 [
+      ;ifelse count potential-neighbors > change
+      ;[
+        ;ask n-of change potential-neighbors [create-link-with me_connector]
+        ;let new-already-neighbors link-neighbors
+        ;let sorted-neighbors sort-on [abs ([attitude] of me_connector - [attitude] of myself)] link-neighbors
+        ;let my_links links with [end1 = me_connector or end2 = me_connector]
+        ;let selected-neighbors turtle-set n-of change sorted-neighbors
+        ;ask selected-neighbors [
+          ;let die-links my_links with [end1 = myself or end2 = myself]
+          ;ask die-links [die]]
+      ;]
+
+      ;[
+        ;ask potential-neighbors [create-link-with me_connector]
+        ;let new-already-neighbors link-neighbors
+        ;let sorted-neighbors sort-on [abs ([attitude] of me_connector - [attitude] of myself)] link-neighbors
+        ;let my_links links with [end1 = me_connector or end2 = me_connector]
+        ;let selected-neighbors turtle-set n-of (count potential-neighbors) sorted-neighbors
+        ;ask selected-neighbors [
+          ;let die-links my_links with [end1 = myself or end2 = myself]
+          ;ask die-links [die]]
+
+      ;]
+
+    ;]
+  ;]
+
 @#$#@#$#@
 GRAPHICS-WINDOW
 210
@@ -429,7 +466,7 @@ INPUTBOX
 1059
 389
 max_prob
-1.0
+0.7
 1
 0
 Number
@@ -440,7 +477,7 @@ INPUTBOX
 1058
 450
 min_prob
-0.0
+0.1
 1
 0
 Number
@@ -485,7 +522,7 @@ CHOOSER
 attitude_behavior
 attitude_behavior
 "linear" "sigmoid" "cubic"
-2
+0
 
 CHOOSER
 1079
@@ -495,7 +532,7 @@ CHOOSER
 biased_observe
 biased_observe
 "unbiased" "biased_towards_extreme"
-1
+0
 
 SWITCH
 1079
@@ -526,7 +563,7 @@ SWITCH
 389
 group_affiliate
 group_affiliate
-1
+0
 1
 -1000
 
