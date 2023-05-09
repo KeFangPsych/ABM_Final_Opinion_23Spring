@@ -466,7 +466,7 @@ INPUTBOX
 1154
 538
 max_prob
-0.7
+1.0
 1
 0
 Number
@@ -477,7 +477,7 @@ INPUTBOX
 1059
 538
 min_prob
-0.1
+0.0
 1
 0
 Number
@@ -522,7 +522,7 @@ CHOOSER
 attitude_behavior
 attitude_behavior
 "linear" "sigmoid" "cubic"
-0
+2
 
 CHOOSER
 966
@@ -532,7 +532,7 @@ CHOOSER
 biased_observe
 biased_observe
 "unbiased" "biased_towards_extreme"
-0
+1
 
 SWITCH
 969
@@ -563,7 +563,7 @@ SWITCH
 417
 group_affiliate
 group_affiliate
-0
+1
 1
 -1000
 
@@ -1350,6 +1350,238 @@ NetLogo 6.3.0
     </enumeratedValueSet>
     <steppedValueSet variable="min_prob" first="0" step="0.1" last="0.5"/>
     <steppedValueSet variable="max_prob" first="0.5" step="0.1" last="1"/>
+    <enumeratedValueSet variable="step">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="attitude_behavior">
+      <value value="&quot;linear&quot;"/>
+      <value value="&quot;sigmoid&quot;"/>
+      <value value="&quot;cubic&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cubic_para">
+      <value value="8.0E-6"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="dis_experiment_100" repetitions="1000" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="101"/>
+    <metric>count turtles with [attitude &gt;= -50 and attitude &lt;= -40]</metric>
+    <metric>count turtles with [attitude &gt;= -40 and attitude &lt;= -30]</metric>
+    <metric>count turtles with [attitude &gt;= -30 and attitude &lt;= -20]</metric>
+    <metric>count turtles with [attitude &gt;= -20 and attitude &lt;= -10]</metric>
+    <metric>count turtles with [attitude &gt;= -10 and attitude &lt;= 0]</metric>
+    <metric>count turtles with [attitude &gt;= 0 and attitude &lt;= 10]</metric>
+    <metric>count turtles with [attitude &gt;= 10 and attitude &lt;= 20]</metric>
+    <metric>count turtles with [attitude &gt;= 20 and attitude &lt;= 30]</metric>
+    <metric>count turtles with [attitude &gt;= 30 and attitude &lt;= 40]</metric>
+    <metric>count turtles with [attitude &gt;= 40 and attitude &lt;= 50]</metric>
+    <enumeratedValueSet variable="no_of_agents">
+      <value value="500"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="no_alone">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="group_affiliate">
+      <value value="true"/>
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="initial_distribution">
+      <value value="&quot;polarized&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="biased_observe">
+      <value value="&quot;unbiased&quot;"/>
+      <value value="&quot;biased_towards_extreme&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sigmoid_para">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="a">
+      <value value="20"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="b">
+      <value value="0.06"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min_prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max_prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="step">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="attitude_behavior">
+      <value value="&quot;linear&quot;"/>
+      <value value="&quot;sigmoid&quot;"/>
+      <value value="&quot;cubic&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cubic_para">
+      <value value="8.0E-6"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="dis_experiment_200" repetitions="1000" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="201"/>
+    <metric>count turtles with [attitude &gt;= -50 and attitude &lt;= -40]</metric>
+    <metric>count turtles with [attitude &gt;= -40 and attitude &lt;= -30]</metric>
+    <metric>count turtles with [attitude &gt;= -30 and attitude &lt;= -20]</metric>
+    <metric>count turtles with [attitude &gt;= -20 and attitude &lt;= -10]</metric>
+    <metric>count turtles with [attitude &gt;= -10 and attitude &lt;= 0]</metric>
+    <metric>count turtles with [attitude &gt;= 0 and attitude &lt;= 10]</metric>
+    <metric>count turtles with [attitude &gt;= 10 and attitude &lt;= 20]</metric>
+    <metric>count turtles with [attitude &gt;= 20 and attitude &lt;= 30]</metric>
+    <metric>count turtles with [attitude &gt;= 30 and attitude &lt;= 40]</metric>
+    <metric>count turtles with [attitude &gt;= 40 and attitude &lt;= 50]</metric>
+    <enumeratedValueSet variable="no_of_agents">
+      <value value="500"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="no_alone">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="group_affiliate">
+      <value value="true"/>
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="initial_distribution">
+      <value value="&quot;polarized&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="biased_observe">
+      <value value="&quot;unbiased&quot;"/>
+      <value value="&quot;biased_towards_extreme&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sigmoid_para">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="a">
+      <value value="20"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="b">
+      <value value="0.06"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min_prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max_prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="step">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="attitude_behavior">
+      <value value="&quot;linear&quot;"/>
+      <value value="&quot;sigmoid&quot;"/>
+      <value value="&quot;cubic&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cubic_para">
+      <value value="8.0E-6"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="dis_experiment_300" repetitions="1000" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="301"/>
+    <metric>count turtles with [attitude &gt;= -50 and attitude &lt;= -40]</metric>
+    <metric>count turtles with [attitude &gt;= -40 and attitude &lt;= -30]</metric>
+    <metric>count turtles with [attitude &gt;= -30 and attitude &lt;= -20]</metric>
+    <metric>count turtles with [attitude &gt;= -20 and attitude &lt;= -10]</metric>
+    <metric>count turtles with [attitude &gt;= -10 and attitude &lt;= 0]</metric>
+    <metric>count turtles with [attitude &gt;= 0 and attitude &lt;= 10]</metric>
+    <metric>count turtles with [attitude &gt;= 10 and attitude &lt;= 20]</metric>
+    <metric>count turtles with [attitude &gt;= 20 and attitude &lt;= 30]</metric>
+    <metric>count turtles with [attitude &gt;= 30 and attitude &lt;= 40]</metric>
+    <metric>count turtles with [attitude &gt;= 40 and attitude &lt;= 50]</metric>
+    <enumeratedValueSet variable="no_of_agents">
+      <value value="500"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="no_alone">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="group_affiliate">
+      <value value="true"/>
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="initial_distribution">
+      <value value="&quot;polarized&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="biased_observe">
+      <value value="&quot;unbiased&quot;"/>
+      <value value="&quot;biased_towards_extreme&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sigmoid_para">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="a">
+      <value value="20"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="b">
+      <value value="0.06"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min_prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max_prob">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="step">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="attitude_behavior">
+      <value value="&quot;linear&quot;"/>
+      <value value="&quot;sigmoid&quot;"/>
+      <value value="&quot;cubic&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="cubic_para">
+      <value value="8.0E-6"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="dis_experiment_400" repetitions="1000" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <timeLimit steps="401"/>
+    <metric>count turtles with [attitude &gt;= -50 and attitude &lt;= -40]</metric>
+    <metric>count turtles with [attitude &gt;= -40 and attitude &lt;= -30]</metric>
+    <metric>count turtles with [attitude &gt;= -30 and attitude &lt;= -20]</metric>
+    <metric>count turtles with [attitude &gt;= -20 and attitude &lt;= -10]</metric>
+    <metric>count turtles with [attitude &gt;= -10 and attitude &lt;= 0]</metric>
+    <metric>count turtles with [attitude &gt;= 0 and attitude &lt;= 10]</metric>
+    <metric>count turtles with [attitude &gt;= 10 and attitude &lt;= 20]</metric>
+    <metric>count turtles with [attitude &gt;= 20 and attitude &lt;= 30]</metric>
+    <metric>count turtles with [attitude &gt;= 30 and attitude &lt;= 40]</metric>
+    <metric>count turtles with [attitude &gt;= 40 and attitude &lt;= 50]</metric>
+    <enumeratedValueSet variable="no_of_agents">
+      <value value="500"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="no_alone">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="group_affiliate">
+      <value value="true"/>
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="initial_distribution">
+      <value value="&quot;polarized&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="biased_observe">
+      <value value="&quot;unbiased&quot;"/>
+      <value value="&quot;biased_towards_extreme&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="sigmoid_para">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="a">
+      <value value="20"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="b">
+      <value value="0.06"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="min_prob">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="max_prob">
+      <value value="1"/>
+    </enumeratedValueSet>
     <enumeratedValueSet variable="step">
       <value value="0.1"/>
     </enumeratedValueSet>
